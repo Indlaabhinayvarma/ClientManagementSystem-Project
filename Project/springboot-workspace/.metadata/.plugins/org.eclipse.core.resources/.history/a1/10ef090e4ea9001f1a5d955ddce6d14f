@@ -1,0 +1,32 @@
+package com.ihub.www;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.ihub.www.exception.ResourceNotFoundException;
+import com.ihub.www.model.EmployeeModel;
+import com.ihub.www.repository.EmployeeRepository;
+
+@Service
+public class EmployeeService 
+{
+	@Autowired
+    EmployeeRepository employeeRepository; 
+	
+	public List<EmployeeModel> getAllEmployees()
+	{
+		return employeeRepository.findAll();
+	}
+	
+	public EmployeeModel createEmployee(EmployeeModel employee)
+	{
+		return employeeRepository.save(employee);
+	}
+	
+	public EmployeeModel getEmployeeById(Long id)
+	{
+		return employeeRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Id Not Found"));
+	}
+}

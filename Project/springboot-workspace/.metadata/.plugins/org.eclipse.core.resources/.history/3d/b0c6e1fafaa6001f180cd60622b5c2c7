@@ -1,0 +1,17 @@
+package com.ihub.www.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table
+
+public class EmployeeModel 
+{
+	private long id;
+	private String firstName;
+	private String lastName;
+	private String email;
+	
+
+}
